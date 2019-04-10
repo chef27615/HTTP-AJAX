@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Route, Link } from 'react-router-dom';
+
 import './App.css';
+import Header from './componenet/Header';
+import Footer from './componenet/Footer';
+import FriendList from './componenet/FriendList';
+
+
+
+
 
 class App extends Component {
   constructor(){
@@ -18,7 +27,7 @@ class App extends Component {
   componentDidMount(){
     axios.get('http://localhost:5000/friends')
     .then(res =>{
-      console.log(res.data)
+      // console.log(res.data)
       this.setState({ friends: res.data});
     })
     .catch(err => {
@@ -30,7 +39,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div>Hello</div>
+
+
+
+        <Header />
+        <Route
+         path='/' 
+         render={(props)=> <FriendList {...props} friends={this.state.friends} />}  
+        />
+        <Footer />
       </div>
     );
   }

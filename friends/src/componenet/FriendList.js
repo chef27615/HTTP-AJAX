@@ -6,19 +6,7 @@ import Friend from './Friend'
 import FriendForm from './FriendForm'
 
 class FriendList extends Component{
-    constructor(props){
-        super(props);
-    }
-
-    // handleChange = e =>{
-    //     console.log(e)
-    // }
-    
-    // handleSubmit = newFriend =>{
-    //     axios.post('http://localhost:5000/friends', newFriend)
-    //    .then(res=>{console.log(res)})         
-    //    .catch(err=>{console.log('Error: ', err)});
-    // }
+   
 
     render(){
         const {friends} = this.props
@@ -28,12 +16,14 @@ class FriendList extends Component{
         {friends.map(friend=>
         <Friend 
         friend={friend} 
-        delFriend = {this.props.delFriend} 
+        delFriend = {this.props.delFriend}
+        updateFriend={this.props.updateFriend}
         />)}
 
         <FriendForm 
         handleSubmit={this.props.handleSubmit} 
         handleChange={this.handleChange} 
+        updateFriend={this.props.updateFriend}
         />
         </div> 
     )}
@@ -60,3 +50,17 @@ export default FriendList;
 //axios.post('http://localhost:5000/friends', newFriend)
 //         .then(res=>{console.log(res)})
 //         .catch(err=>{console.log('Error: ', err)});
+
+// handleChange = e =>{
+    //     console.log(e)
+    // }
+    
+    // handleSubmit = newFriend =>{
+    //     axios.post('http://localhost:5000/friends', newFriend)
+    //    .then(res=>{console.log(res)})         
+    //    .catch(err=>{console.log('Error: ', err)});
+    // }
+
+     // constructor(props){
+    //     super(props);
+    // }

@@ -9,6 +9,16 @@ class FriendForm extends Component {
            email:'' 
         
     }
+
+    componentDidMount(){
+        if(this.props.currentFriend){
+            this.setState({
+                name: this.props.currentFriend.name,
+                age: this.props.currentFriend.age,
+                email: this.props.currentFriend.email
+            })
+        }
+    }
   
     handleChange = e =>{
         this.setState({
@@ -18,12 +28,21 @@ class FriendForm extends Component {
   
     handleSubmit = e =>{
         e.preventDefault();
-       this.props.handleSubmit(this.state)
+
+        if(!this.props.currentFriend){
+            this.props.handleSubmit(this.state)
+        }
+
+        else{
+            this.props.updateFriend(this.state)
+        }    
            this.setState({
-              name:'',
+            name:'',
             age:'',
-           email:'' 
+            email:'' 
            }) 
+
+        this.props.history.push('/')   
     }
     
     render() {
@@ -54,7 +73,7 @@ class FriendForm extends Component {
                 onChange = {this.handleChange}      
                 />
                 <button>Click Here</button>
-                
+
             </form>
             
         </div>

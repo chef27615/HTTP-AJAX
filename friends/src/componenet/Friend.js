@@ -11,6 +11,9 @@ const Friend = props => {
       <button
         onClick={() => props.delFriend(props.friend.id)}
       >delete</button>
+      <button
+        onclick={()=> props.updateFriend(props.friend)}
+      >update</button>
     </div>
   )
 }

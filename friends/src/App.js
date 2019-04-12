@@ -15,8 +15,9 @@ class App extends Component {
   constructor(){
     super();
     this.state={
-      friends: []
-    }
+      friends: [],
+      currentFriend: null
+    };
   }
 
   componentDidMount(){
@@ -46,6 +47,11 @@ delFriend = id =>{
    .catch(err=>{console.log('Error: ', err)});
 }
 
+updateFriend = friend => {
+  this.setState({currentFriend:friend});
+  this.props.history.push('/');
+}
+
   
   render() {
     return (
@@ -57,6 +63,7 @@ delFriend = id =>{
          friends={this.state.friends} 
          handleSubmit ={this.handleSubmit}
          delFriend = {this.delFriend}
+         updateFriend = {this.updateFriend}
          />}  
         />
         <Footer />

@@ -40,6 +40,7 @@ class App extends Component {
 }
 
 delFriend = id =>{
+  console.log('water!')
   axios.delete(`http://localhost:5000/friends/${id}`)
    .then(res=>{
      this.setState({friends: res.data})
@@ -48,6 +49,7 @@ delFriend = id =>{
 }
 
 updateFriend = friend => {
+  console.log('fire!')
   this.setState({currentFriend:friend});
   this.props.history.push('/');
 }
